@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Quejas from "../view/Quejas.vue";
 
 Vue.use(VueRouter);
 
@@ -7,6 +8,7 @@ const routes = [
   {
     path: "/",
     name: "Quejas",
+    component: Quejas,
   },
   {
     path: "/login",
