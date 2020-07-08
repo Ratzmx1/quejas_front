@@ -15,7 +15,15 @@ export default {
 
   data: () => ({
     //
-  })
+  }),
+  mounted() {
+    const tok = localStorage.getItem("token");
+    if (tok) {
+      this.$store.dispatch("updateSesion", { bol: true, tok });
+    } else {
+      console.log("No existe item");
+    }
+  }
 };
 </script>
 

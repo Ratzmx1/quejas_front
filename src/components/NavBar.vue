@@ -6,6 +6,7 @@
 
     <v-spacer></v-spacer>
 
+    <v-tab to="/" v-if="$store.state.log">Mis quejas</v-tab>
     <div v-for="(item, i) in opciones" :key="i">
       <v-tab :to="item.url">{{ item.opcion }}</v-tab>
     </div>
