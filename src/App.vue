@@ -20,8 +20,6 @@ export default {
     const tok = localStorage.getItem("token");
     if (tok) {
       this.$store.dispatch("updateSesion", { bol: true, tok });
-    } else {
-      console.log("No existe item");
     }
   }
 };

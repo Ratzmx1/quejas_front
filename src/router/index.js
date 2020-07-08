@@ -3,12 +3,18 @@ import VueRouter from "vue-router";
 import Quejas from "../view/QuejasView.vue";
 import Login from "../view/LoginView.vue";
 import Signup from "../view/SignupView.vue";
+import Main from "../view/MainView.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
+    name: "Main",
+    component: Main,
+  },
+  {
+    path: "/quejas",
     name: "Quejas",
     component: Quejas,
   },

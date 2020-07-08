@@ -13,11 +13,22 @@ export default new Vuex.Store({
       state.loged = obj.bol;
       state.token = obj.tok;
     },
+    logout(state) {
+      state.loged = false;
+      state.token = "";
+    },
   },
   actions: {
     updateSesion(context, obj) {
       context.commit("sesion", obj);
     },
+    closeSesion(context) {
+      context.commit("logout");
+    },
   },
-  modules: {},
+  getters: {
+    isLoged: (state) => {
+      return state.loged;
+    },
+  },
 });
