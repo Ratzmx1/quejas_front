@@ -6,15 +6,26 @@
       <v-row>
         <v-col cols="6" offset="3">
           <v-form>
-            <v-text-field @keyup.enter="login" v-model="email" type="email" label="Email" />
+            <v-text-field
+              :rules="rulesEmail"
+              @keyup.enter="login"
+              v-model="email"
+              type="email"
+              label="Email"
+            />
 
-            <v-text-field v-model="password" @keyup.enter="login" type="password" label="Password" />
+            <v-text-field
+              :rules="rules"
+              v-model="password"
+              @keyup.enter="login"
+              type="password"
+              label="Password"
+            />
 
             <br />
-            <v-btn color="primary" @click="login" :disabled="false" block>Login</v-btn>
+            <v-btn color="primary" @click="login" :disabled="disableButton" block>Login</v-btn>
             <br />
             <v-alert v-if="showAlert" color="red darken-3" dark>{{ alertMessage }}</v-alert>
-            <v-alert v-if="loged" color="success">You're Loged in</v-alert>
           </v-form>
         </v-col>
       </v-row>
@@ -36,7 +47,14 @@ export default {
       disableButton: true,
       showAlert: false,
       alertMessage: "",
-      loged: false
+      rules: [
+        value => !!value || "Required",
+        value => (value && value.length >= 3) || "Minimo 3 caracteres"
+      ],
+      rulesEmail: [
+        value => !!value || "Required",
+        value => (value && isemail.validate(value)) || "Invalid email"
+      ]
     };
   },
   watch: {
@@ -60,6 +78,7 @@ export default {
       if (isemail.validate(this.email) && this.password.length > 0) {
         axios
           .post("http://localhost:3030/user/login", {
+            // .post("http://5784c572b97c.ngrok.io/user/login", {
             email: this.email,
             password: this.password
           })

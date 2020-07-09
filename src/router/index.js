@@ -4,6 +4,7 @@ import Quejas from "../view/QuejasView.vue";
 import Login from "../view/LoginView.vue";
 import Signup from "../view/SignupView.vue";
 import Main from "../view/MainView.vue";
+import Search from "../view/SeachView.vue";
 
 Vue.use(VueRouter);
 
@@ -31,6 +32,7 @@ const routes = [
   {
     path: "/search",
     name: "Search",
+    component: Search,
   },
 ];
 
