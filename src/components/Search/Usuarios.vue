@@ -2,13 +2,29 @@
   <div>
     <br />
     <h1 class="display-2 text-center">Search</h1>
-    <v-row dense justify="center" no-gutters>
-      <div v-for="(item, index) in users" :key="index">
-        <v-col cols="12" sm="12">
-          <Usuario :data="item" />
-          <v-spacer />
-        </v-col>
-      </div>
+    <v-row>
+      <v-col cols="3" md="3" sm="12">
+        <h3 class="display-1 text-center">Filtros</h3>
+        <br />
+        <v-text-field
+          v-model="searchBar"
+          outlined
+          dense
+          hide-details
+          prepend-icon="search"
+          single-line
+        ></v-text-field>
+      </v-col>
+      <v-col cols="9">
+        <v-row dense justify="center" no-gutters>
+          <div v-for="(item, index) in busqueda" :key="index">
+            <v-col>
+              <Usuario :data="item" />
+              <v-spacer />
+            </v-col>
+          </div>
+        </v-row>
+      </v-col>
     </v-row>
   </div>
 </template>
@@ -21,7 +37,8 @@ export default {
   name: "Usuarios",
   data() {
     return {
-      users: []
+      users: [],
+      searchBar: ""
     };
   },
   created() {
@@ -33,7 +50,7 @@ export default {
   computed: {
     nombreAscendente() {
       // const test = []
-      const data = this.users.slice();
+      const data = this.busqueda.slice();
       data.sort((a, b) => {
         const a1 = a.name.toUpperCase();
         const b1 = b.name.toUpperCase();
@@ -47,7 +64,7 @@ export default {
     },
     nombreDescendente() {
       // const test = []
-      const data = this.users.slice();
+      const data = this.busqueda.slice();
       data.sort((a, b) => {
         const a1 = a.name.toUpperCase();
         const b1 = b.name.toUpperCase();
@@ -58,10 +75,19 @@ export default {
         }
       });
       return data;
+    },
+    busqueda() {
+      const busq = [];
+
+      this.users.forEach(el => {
+        if (el.name.toUpperCase().indexOf(this.searchBar.toUpperCase()) > -1) {
+          busq.push(el);
+        }
+      });
+      return busq;
     }
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

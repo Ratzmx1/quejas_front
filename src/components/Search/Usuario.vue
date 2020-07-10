@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-card width="500px">
+    <v-card width="380px">
       <v-list-item three-line>
         <v-list-item-content>
           <div class="overline mb-4">{{anios}} Years</div>
