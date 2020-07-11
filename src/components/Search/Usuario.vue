@@ -12,7 +12,7 @@
         </v-list-item-avatar>
       </v-list-item>
       <v-card-actions>
-        <v-btn color="deep-purple darken-4" dark :to="url" block>Hacer reclamo</v-btn>
+        <v-btn color="deep-purple darken-4" dark @click="reclamar" block>Hacer reclamo</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -29,18 +29,11 @@ export default {
       const a = moment(this.data.birthDate, "YYYY/MM/DD");
       const b = moment();
       return b.diff(a, "years");
-    },
-    url() {
-      const to = "/reclamar/";
-      return to + this.data._id;
-    },
-    ascendente() {
-      // const test = []
-      const data = this.data;
-      data.sort((a, b) => {
-        a.name >= b.name;
-      });
-      return data;
+    }
+  },
+  methods: {
+    reclamar() {
+      this.$router.push({ name: "Reclamar", params: { id: this.data._id } });
     }
   }
 };

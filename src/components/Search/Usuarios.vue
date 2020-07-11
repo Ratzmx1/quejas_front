@@ -3,20 +3,22 @@
     <br />
     <h1 class="display-2 text-center">Search</h1>
     <v-row>
-      <v-col cols="3" md="3" sm="12">
-        <h3 class="display-1 text-center">Filtros</h3>
-        <br />
-        <v-text-field
-          v-model="searchBar"
-          outlined
-          dense
-          hide-details
-          prepend-icon="search"
-          single-line
-        ></v-text-field>
+      <v-col cols="3" lg="3" md="12">
+        <div>
+          <h3 class="display-1 text-center">Filtros</h3>
+          <br />
+          <v-text-field
+            v-model="searchBar"
+            outlined
+            dense
+            hide-details
+            prepend-icon="search"
+            single-line
+          ></v-text-field>
+        </div>
       </v-col>
-      <v-col cols="9">
-        <v-row dense justify="center" no-gutters>
+      <v-col cols="9" lg="9" md="12">
+        <v-row dense justify no-gutters>
           <div v-for="(item, index) in busqueda" :key="index">
             <v-col>
               <Usuario :data="item" />
@@ -89,5 +91,3 @@ export default {
   }
 };
 </script>
-
-<style></style>

@@ -1,18 +1,13 @@
 <template>
   <div>
-    <br />
-    <h1 class="display-2 text-center">Mis quejas</h1>
+    <reclamos />
   </div>
 </template>
 
 <script>
+import Reclamos from "../components/MisReclamos/Reclamos.vue";
 export default {
-  data() {
-    return {
-      quejas: [],
-    };
-  },
-  mounted() {},
+  components: { Reclamos }
 };
 </script>
 
